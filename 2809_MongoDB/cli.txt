@@ -2,7 +2,8 @@ TASK1:
  1. Find students with age equal to 22 and marks equal to 90
  2. Find students with marks greater than or equal to 80 and age greater than or equal to 18
  3. Find students whose grades are "A++"
-
+ 4. Count number of documents in Collection
+ 
 test> use Chitkara
 switched to db Chitkara
 Chitkara> db.Student.find({
@@ -62,3 +63,22 @@ Chitkara> db.Student.find({
 
 Chitkara>
 
+test> use Chitkara
+switched to db Chitkara
+Chitkara> db.Student.countDocuments()
+5
+Chitkara> db.Faculty.countDocuments()
+5
+Chitkara> db.User.countDocuments()
+5
+
+
+//4.1 Count for Specific value
+
+Chitkara> db.Student.countDocuments({"age":22})
+1
+Chitkara> db.Student.countDocuments({"marks":80})
+0
+Chitkara> db.Student.countDocuments({"marks":{$gte:80}})
+4
+Chitkara>

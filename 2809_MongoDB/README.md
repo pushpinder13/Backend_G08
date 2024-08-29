@@ -19,3 +19,20 @@ Date-29/08/2024
     "grade": "A++"
 });
 
+--> Number of documents in collection:-
+
+--> db.Student.countDocuments()
+
+--> db.Faculty.countDocuments()
+
+--> db.User.countDocuments()
+
+--> Another way to do this :-
+ db.Student.estimatedDocumentCount();
+
+
+--> db.Student.countDocuments({"age":22})
+
+--> db.Student.countDocuments({"marks":80})
+
+--> db.Student.countDocuments({"marks":{$gte:80}})

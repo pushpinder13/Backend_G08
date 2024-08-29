@@ -15,3 +15,20 @@ db.Student.find({
     "grade": "A++"
 });
 
+//4. Count number of documents in Collection
+db.Student.countDocuments()
+
+db.Faculty.countDocuments()
+
+db.User.countDocuments()
+
+db.Student.estimatedDocumentCount();
+
+db.Student.countDocuments({"age":22})
+
+db.Student.countDocuments({"marks":80})
+
+db.Student.countDocuments({"marks":{$gte:80}})
+
+
+
