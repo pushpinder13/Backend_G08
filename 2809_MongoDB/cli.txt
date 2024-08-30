@@ -73,7 +73,7 @@ Chitkara> db.User.countDocuments()
 5
 
 
-//4.1 Count for Specific value
+--> 4.1:- Count for Specific value
 
 Chitkara> db.Student.countDocuments({"age":22})
 1
