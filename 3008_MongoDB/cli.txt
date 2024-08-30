@@ -1,0 +1,673 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\yadpu> mongosh
+Current Mongosh Log ID: 66d17d78669e8759422710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-29T00:14:13.255+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> use Chitkara\
+MongoshInvalidInputError: [COMMON-10001] Invalid database name: Chitkara\
+test> use Chitkara
+switched to db Chitkara
+Chitkara> db.Student.find({
+...     $and: [
+...         { "age": 22 },
+...         { "marks": 90 }
+...     ]
+... });
+
+Chitkara> db.Student.find({
+...     $or: [
+...         { "age": 22 },
+...         { "marks": 90 }
+...     ]
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e84'),
+    name: 'Diana Blue',
+    age: 22,
+    subject: 'Mathematics',
+    marks: 89,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara> db.Student.find({
+...     $nor: [
+...         { "age": 22 },
+...         { "marks": 90 }
+...     ]
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e81'),
+    name: 'Alice Green',
+    age: 20,
+    subject: 'Biology',
+    marks: 78,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e82'),
+    name: 'Bob White',
+    age: 21,
+    subject: 'Chemistry',
+    marks: 82,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e85'),
+    name: 'Evan Red',
+    age: 24,
+    subject: 'Geography',
+    marks: 86,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara> db.Student.find({
+...     "age": { $not: { $eq: 22 } }
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e81'),
+    name: 'Alice Green',
+    age: 20,
+    subject: 'Biology',
+    marks: 78,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e82'),
+    name: 'Bob White',
+    age: 21,
+    subject: 'Chemistry',
+    marks: 82,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e85'),
+    name: 'Evan Red',
+    age: 24,
+    subject: 'Geography',
+    marks: 86,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara>
+
+Chitkara> db.Student.find({
+...     "age": { $exists: true }
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e81'),
+    name: 'Alice Green',
+    age: 20,
+    subject: 'Biology',
+    marks: 78,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e82'),
+    name: 'Bob White',
+    age: 21,
+    subject: 'Chemistry',
+    marks: 82,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e84'),
+    name: 'Diana Blue',
+    age: 22,
+    subject: 'Mathematics',
+    marks: 89,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e85'),
+    name: 'Evan Red',
+    age: 24,
+    subject: 'Geography',
+    marks: 86,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara> db.Student.find({
+...     "marks": { $type: "int" }
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e81'),
+    name: 'Alice Green',
+    age: 20,
+    subject: 'Biology',
+    marks: 78,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e82'),
+    name: 'Bob White',
+    age: 21,
+    subject: 'Chemistry',
+    marks: 82,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e84'),
+    name: 'Diana Blue',
+    age: 22,
+    subject: 'Mathematics',
+    marks: 89,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e85'),
+    name: 'Evan Red',
+    age: 24,
+    subject: 'Geography',
+    marks: 86,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara>
+
+Chitkara> db.Student.find({
+...     "marks": { $exists: true, $gte: 90 }
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara> db.Student.find({
+...     "marks": {
+...         $type: "int",
+...         $gte: 90
+...     }
+... });
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara>
+
+Chitkara>
+
+Chitkara> db.Student.updateOne(
+...     { "age": 22 },
+...     { $set: { "marks": 95 } }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Chitkara> db.Student.updateOne(
+...     { "age": 22 },
+...     { $set: { "marks": 95 } }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Chitkara> db.Student.updateMany(
+...     { "age": 22 },
+...     { $set: { "marks": 95 } }
+...   {$set:{"city":"N"}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (4:2)
+
+  2 |     { "age": 22 },
+  3 |     { $set: { "marks": 95 } }
+> 4 |   {$set:{"city":"N"}}
+    |   ^
+  5 |
+
+Chitkara> );
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | );
+    | ^
+  2 |
+
+Chitkara> db.Student.updateMany(
+...     { "age": 22 },  // Filter: Find all students with age 22
+...     {
+...         $set: {
+...             "marks": 95,
+...             "city": "N"
+...         }
+...     }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Chitkara> db.Student.updateMany(
+...     { "age": 22 },
+...     {
+...         $set: {
+...             "marks": 95,
+...             "city": "N"
+...         }
+...     }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Chitkara> db.Student.replaceOne(
+...     { "name": "Bob" },
+...     {
+...         "name": "Bob",
+...         "age": 25,
+...         "marks": 90,
+...         "city": "San Francisco",
+...         "grade": "A"
+...     }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Chitkara> db.Student.replaceOne(
+...     { "name": "Bob" },
+...     {
+...         "name": "Bob",
+...         "age": 25,
+...         "marks": 90,
+...         "city": "San Francisco",
+...         "grade": "A"
+...     }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 0,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+Chitkara> db.Student.replaceOne(
+...     { "name": "Bob White" },
+...     {
+...         "name": "Bob",
+...         "age": 25,
+...         "marks": 90,
+...         "city": "San Francisco",
+...         "grade": "A"
+...     }
+... );
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+Chitkara>
+
+Chitkara> db.Student.findOneAndUpdate(
+...     { "name": "Alice" },
+...     { $set: { "marks": 85 } }
+... );
+null
+Chitkara> db.Student.findOneAndUpdate(
+...     { "name": "Bob White"  },
+...     { $set: { "marks": 85 } }
+... );
+null
+Chitkara> db.Student.findOneAndUpdate(
+...     { "name": "Bob"  },
+...     { $set: { "marks": 85 } }
+... );
+{
+  _id: ObjectId('66cf54e81629f696697c6e82'),
+  name: 'Bob',
+  age: 25,
+  marks: 90,
+  city: 'San Francisco',
+  grade: 'A'
+}
+Chitkara> db.Student.find()
+[
+  {
+    _id: ObjectId('66cf54e81629f696697c6e81'),
+    name: 'Alice Green',
+    age: 20,
+    subject: 'Biology',
+    marks: 78,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e82'),
+    name: 'Bob',
+    age: 25,
+    marks: 85,
+    city: 'San Francisco',
+    grade: 'A'
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e83'),
+    name: 'Charlie Black',
+    age: 23,
+    subject: 'Physics',
+    marks: 91,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e84'),
+    name: 'Diana Blue',
+    age: 22,
+    subject: 'Mathematics',
+    marks: 95,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z'),
+    city: 'N'
+  },
+  {
+    _id: ObjectId('66cf54e81629f696697c6e85'),
+    name: 'Evan Red',
+    age: 24,
+    subject: 'Geography',
+    marks: 86,
+    Stream: 'Data Science',
+    Address: 'Chitkara ',
+    date: ISODate('2024-08-28T17:35:28.698Z')
+  }
+]
+Chitkara>
+
+Chitkara> db.Deleted.insertMany([
+...     {
+...         "name": "Alice Johnson",
+...         "reason": "Account inactive",
+...         "date": new Date()
+...     },
+...     {
+...         "name": "Bob White",
+...         "reason": "Requested deletion",
+...         "date": new Date()
+...     },
+...     {
+...         "name": "Charlie Brown",
+...         "reason": "Duplicate account",
+...         "date": new Date()
+...     },
+...     {
+...         "name": "David Smith",
+...         "reason": "Policy violation",
+...         "date": new Date()
+...     },
+...     {
+...         "name": "Emma Davis",
+...         "reason": "User requested",
+...         "date": new Date()
+...     }
+... ]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66d191e3669e8759422710bc'),
+    '1': ObjectId('66d191e3669e8759422710bd'),
+    '2': ObjectId('66d191e3669e8759422710be'),
+    '3': ObjectId('66d191e3669e8759422710bf'),
+    '4': ObjectId('66d191e3669e8759422710c0')
+  }
+}
+Chitkara> db.Deleted.deleteOne({})
+{ acknowledged: true, deletedCount: 1 }
+Chitkara> db.Deleted.find()
+[
+  {
+    _id: ObjectId('66d191e3669e8759422710bd'),
+    name: 'Bob White',
+    reason: 'Requested deletion',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710be'),
+    name: 'Charlie Brown',
+    reason: 'Duplicate account',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710bf'),
+    name: 'David Smith',
+    reason: 'Policy violation',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710c0'),
+    name: 'Emma Davis',
+    reason: 'User requested',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  }
+]
+Chitkara> db.Deleted.insertOne({
+...     "name": "John Doe",
+...     "reason": "Account closed",
+...     "date": new Date()
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId('66d19259669e8759422710c1')
+}
+Chitkara> db.Deleted.find()
+[
+  {
+    _id: ObjectId('66d191e3669e8759422710bd'),
+    name: 'Bob White',
+    reason: 'Requested deletion',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710be'),
+    name: 'Charlie Brown',
+    reason: 'Duplicate account',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710bf'),
+    name: 'David Smith',
+    reason: 'Policy violation',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710c0'),
+    name: 'Emma Davis',
+    reason: 'User requested',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d19259669e8759422710c1'),
+    name: 'John Doe',
+    reason: 'Account closed',
+    date: ISODate('2024-08-30T09:35:21.672Z')
+  }
+]
+Chitkara> db.Deleted.deleteOne({ "name": "Bob White" });
+{ acknowledged: true, deletedCount: 1 }
+Chitkara> db.Deleted.deleteMany({ "reason": "Account inactive" });
+{ acknowledged: true, deletedCount: 0 }
+Chitkara> db.Deleted.find()
+[
+  {
+    _id: ObjectId('66d191e3669e8759422710be'),
+    name: 'Charlie Brown',
+    reason: 'Duplicate account',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710bf'),
+    name: 'David Smith',
+    reason: 'Policy violation',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710c0'),
+    name: 'Emma Davis',
+    reason: 'User requested',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d19259669e8759422710c1'),
+    name: 'John Doe',
+    reason: 'Account closed',
+    date: ISODate('2024-08-30T09:35:21.672Z')
+  }
+]
+Chitkara> db.Deleted.deleteMany({ "reason": "David Smith" });
+{ acknowledged: true, deletedCount: 0 }
+Chitkara> db.Deleted.find()
+[
+  {
+    _id: ObjectId('66d191e3669e8759422710be'),
+    name: 'Charlie Brown',
+    reason: 'Duplicate account',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710bf'),
+    name: 'David Smith',
+    reason: 'Policy violation',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d191e3669e8759422710c0'),
+    name: 'Emma Davis',
+    reason: 'User requested',
+    date: ISODate('2024-08-30T09:33:23.266Z')
+  },
+  {
+    _id: ObjectId('66d19259669e8759422710c1'),
+    name: 'John Doe',
+    reason: 'Account closed',
+    date: ISODate('2024-08-30T09:35:21.672Z')
+  }
+]
+Chitkara> db.Deleted.deleteMany({ "reason": "Account closed" });
+{ acknowledged: true, deletedCount: 1 }
+Chitkara> db.Deleted.findOneAndDelete({ "name": "Charlie Brown" });
+{
+  _id: ObjectId('66d191e3669e8759422710be'),
+  name: 'Charlie Brown',
+  reason: 'Duplicate account',
+  date: ISODate('2024-08-30T09:33:23.266Z')
+}
+Chitkara>
